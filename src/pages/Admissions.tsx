@@ -16,25 +16,25 @@ const requirements = [
     level: "Reception",
     age: "Ages 2–3",
     docs: ["Birth certificate (original + copy)", "Immunization card", "2 passport photographs", "Completed application form"],
-    fees: "₦150,000 per term",
+    fees: "₦50,000 per term",
   },
   {
     level: "Nursery",
     age: "Ages 3–5",
     docs: ["Birth certificate", "Immunization/medical records", "2 passport photographs", "Completed application form", "Informal assessment"],
-    fees: "₦180,000 per term",
+    fees: "₦50,000 per term",
   },
   {
     level: "Primary",
     age: "Ages 5–11",
     docs: ["Birth certificate", "Last 2 school reports", "Transfer certificate (if applicable)", "2 passport photographs", "Entrance exam results"],
-    fees: "₦220,000 per term",
+    fees: "₦60,000 per term",
   },
   {
     level: "Secondary",
     age: "Ages 11–17",
     docs: ["Common Entrance results", "Primary 6 school leaving certificate", "Birth certificate", "Medical fitness certificate", "2 passport photographs"],
-    fees: "₦280,000 per term",
+    fees: "₦100,000 per term",
   },
 ];
 
@@ -180,7 +180,7 @@ export default function Admissions() {
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-border bg-card text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
-                  placeholder="email@example.com"
+                  placeholder="excel@dagrojel.com"
                 />
               </div>
               <div>
@@ -191,7 +191,7 @@ export default function Admissions() {
                   value={form.phone}
                   onChange={(e) => setForm({ ...form, phone: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-border bg-card text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
-                  placeholder="+234 801 234 5678"
+                  placeholder="+234 816 4800 973"
                 />
               </div>
             </div>

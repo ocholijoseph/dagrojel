@@ -100,34 +100,34 @@ export default function Footer() {
             <li className="flex gap-3">
               <MapPin size={16} className="text-accent mt-0.5 flex-shrink-0" />
               <span className="text-sm text-primary-foreground/75">
-                123 Excellence Avenue, Gwarinpa, Abuja, FCT, Nigeria
+                Along Road D, Aco Estate Phase 1/2, Airport Road, Abuja
               </span>
             </li>
             <li>
               <a
-                href="tel:+2348012345678"
+                href="tel:+2348164800973"
                 className="flex gap-3 text-sm text-primary-foreground/75 hover:text-accent transition-colors"
               >
                 <Phone size={16} className="text-accent flex-shrink-0" />
-                +234 801 234 5678
+                +234 816 4800 973
               </a>
             </li>
             <li>
               <a
-                href="tel:+2348098765432"
+                href="tel:+2348033995446"
                 className="flex gap-3 text-sm text-primary-foreground/75 hover:text-accent transition-colors"
               >
                 <Phone size={16} className="text-accent flex-shrink-0" />
-                +234 809 876 5432
+                +234 803 3995 446
               </a>
             </li>
             <li>
               <a
-                href="mailto:info@dagrojel.edu.ng"
+                href="mailto:excel@dagrojel.com"
                 className="flex gap-3 text-sm text-primary-foreground/75 hover:text-accent transition-colors"
               >
                 <Mail size={16} className="text-accent flex-shrink-0" />
-                info@dagrojel.edu.ng
+                excel@dagrojel.com
               </a>
             </li>
           </ul>

@@ -1,25 +1,25 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Youtube } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Youtube, Globe } from "lucide-react";
 
 const contactInfo = [
   {
     icon: MapPin,
     title: "Our Address",
-    lines: ["123 Excellence Avenue, Gwarinpa", "Abuja, FCT, Nigeria"],
+    lines: ["Along Road D, Aco Estate Phase 1/2", "Airport Road, Abuja"],
     color: "bg-primary/10 text-primary",
     grad: "var(--gradient-primary)",
   },
   {
     icon: Phone,
     title: "Phone Numbers",
-    lines: ["+234 801 234 5678", "+234 809 876 5432"],
+    lines: ["+234 816 4800 973", "+234 803 3995 446"],
     color: "bg-secondary/10 text-secondary",
     grad: "var(--gradient-secondary)",
   },
   {
     icon: Mail,
     title: "Email Addresses",
-    lines: ["info@dagrojel.edu.ng", "admissions@dagrojel.edu.ng"],
+    lines: ["excel@dagrojel.com", "excel@dagrojel.com"],
     color: "bg-accent/10 text-accent-foreground",
     grad: "var(--gradient-gold)",
   },
@@ -29,6 +29,13 @@ const contactInfo = [
     lines: ["Mon – Fri: 7:30am – 4:00pm", "Sat: 8:00am – 12:00pm (Admin)"],
     color: "bg-primary/10 text-primary",
     grad: "var(--gradient-primary)",
+  },
+  {
+    icon: Globe,
+    title: "Website",
+    lines: ["https://dagrojel.com"],
+    color: "bg-secondary/10 text-secondary",
+    grad: "var(--gradient-secondary)",
   },
 ];
 
@@ -128,7 +135,7 @@ export default function Contact() {
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
-                      placeholder="+234 801 234 5678"
+                      placeholder="+234 816 4800 973"
                     />
                   </div>
                 </div>
@@ -140,7 +147,7 @@ export default function Contact() {
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-border bg-background text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
-                    placeholder="your@email.com"
+                    placeholder="excel@dagrojel.com"
                   />
                 </div>
                 <div>

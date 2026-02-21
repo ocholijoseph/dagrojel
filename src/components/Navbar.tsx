@@ -46,17 +46,17 @@ export default function Navbar() {
       <div className="hidden md:block bg-primary text-primary-foreground py-2">
         <div className="container flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:+2348012345678" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+            <a href="tel:+2348164800973" className="flex items-center gap-1.5 hover:text-accent transition-colors">
               <Phone size={13} />
-              +234 801 234 5678
+              +234 816 4800 973
             </a>
-            <a href="mailto:info@dagrojel.edu.ng" className="flex items-center gap-1.5 hover:text-accent transition-colors">
+            <a href="mailto:excel@dagrojel.com" className="flex items-center gap-1.5 hover:text-accent transition-colors">
               <Mail size={13} />
-              info@dagrojel.edu.ng
+              excel@dagrojel.com
             </a>
           </div>
           <div className="flex items-center gap-4 text-xs">
-            <span>Abuja, Nigeria</span>
+            <span>Airport Road, Abuja</span>
             <span className="text-accent font-semibold">Admission Open 2025/2026</span>
           </div>
         </div>
