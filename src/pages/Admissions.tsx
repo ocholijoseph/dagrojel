@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { CheckCircle, Download, ChevronDown, ChevronUp } from "lucide-react";
+import { CheckCircle, Download, ChevronDown, ChevronUp, Loader2 } from "lucide-react";
 
 const steps = [
   { num: "01", title: "Submit Application", desc: "Complete the online application form below or download a paper form from our admissions office." },
@@ -51,10 +51,26 @@ export default function Admissions() {
   const [form, setForm] = useState({
     parentName: "", childName: "", email: "", phone: "", level: "", message: "",
   });
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you for your application! Our admissions team will contact you within 48 hours.");
+    setLoading(true);
+
+    try {
+      // TODO: Replace with actual API call
+      // await api.submitAdmissionForm(form);
+
+      // Simulate API delay for now
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      alert("Thank you for your application! Our admissions team will contact you within 48 hours.");
+    } catch (error) {
+      console.error('Failed to submit application:', error);
+      alert("Failed to submit application. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -222,14 +238,22 @@ export default function Admissions() {
             </div>
             <button
               type="submit"
-              className="w-full py-4 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5"
+              disabled={loading}
+              className="w-full py-4 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               style={{
                 background: "var(--gradient-primary)",
                 color: "hsl(var(--primary-foreground))",
                 boxShadow: "var(--shadow-primary)",
               }}
             >
-              Submit Application →
+              {loading ? (
+                <span className="flex items-center justify-center gap-2">
+                  <Loader2 size={18} className="animate-spin" />
+                  Submitting...
+                </span>
+              ) : (
+                "Submit Application →"
+              )}
             </button>
           </form>
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Youtube, Globe } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Facebook, Twitter, Instagram, Youtube, Globe, Loader2 } from "lucide-react";
 
 const contactInfo = [
   {
@@ -49,10 +49,26 @@ const socialLinks = [
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+
+    try {
+      // TODO: Replace with actual API call
+      // await api.submitContactForm(form);
+
+      // Simulate API delay for now
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Failed to submit form:', error);
+      // TODO: Show error toast
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -180,14 +196,22 @@ export default function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5"
+                  disabled={loading}
+                  className="w-full py-4 rounded-xl font-semibold text-sm transition-all hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                   style={{
                     background: "var(--gradient-primary)",
                     color: "hsl(var(--primary-foreground))",
                     boxShadow: "var(--shadow-primary)",
                   }}
                 >
-                  Send Message →
+                  {loading ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <Loader2 size={18} className="animate-spin" />
+                      Sending...
+                    </span>
+                  ) : (
+                    "Send Message →"
+                  )}
                 </button>
               </form>
             )}
