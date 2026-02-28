@@ -1,0 +1,7 @@
+# SPA fallback - redirect non-hash URLs to hash URLs for SEO
+/gallery https://dagrojel.com/#/gallery 302
+/about https://dagrojel.com/#/about 302
+/academics https://dagrojel.com/#/academics 302
+/admissions https://dagrojel.com/#/admissions 302
+/news https://dagrojel.com/#/news 302
+/contact https://dagrojel.com/#/contact 302
