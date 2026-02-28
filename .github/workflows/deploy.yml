@@ -1,0 +1,44 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: 'dist/'
+          target: ${{ secrets.DEPLOY_PATH }}
+          strip-components: 1
+          port: ${{ secrets.SSH_PORT || '22' }}
+          args: -avz --delete
+
+      - name: Restart web server
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Detect and restart appropriate web server
+            if systemctl is-active nginx 2>/dev/null; then
+              echo "Restarting Nginx..."
+              sudo systemctl restart nginx
+            elif systemctl is-active apache2 2>/dev/null; then
+              echo "Restarting Apache..."
+              sudo systemctl restart apache2
+            elif command -v pm2 &>/dev/null; then
+              echo "Restarting PM2..."
+              pm2 restart dagrojel
+            else
+              echo "No web server detected. Please restart manually."
+              exit 1
