@@ -1,17 +1,17 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 
 // Mock scroll event
 Object.defineProperty(window, 'scrollY', { value: 0, writable: true });
 
 describe('Navbar', () => {
-  const renderNavbar = (initialEntries = ['/']) => {
+  const renderNavbar = (initialEntries = ['#/']) => {
     return render(
-      <MemoryRouter initialEntries={initialEntries}>
+      <HashRouter>
         <Navbar />
-      </MemoryRouter>
+      </HashRouter>
     );
   };
 
@@ -134,21 +134,29 @@ describe('Navbar', () => {
 
   describe('Active Route Styling', () => {
     it('should highlight Home link when on home page', () => {
-      renderNavbar(['/']);
-      const homeLink = screen.getByText('Home');
+      renderNavbar();
+      const homeLink = screen.getByText('Home').closest('a');
       expect(homeLink).toHaveClass('font-semibold');
     });
 
     it('should highlight About link when on about page', () => {
-      renderNavbar(['/about']);
+      renderNavbar();
+      // Click About link to simulate navigation
       const aboutLink = screen.getByText('About Us');
-      expect(aboutLink).toHaveClass('font-semibold');
+      fireEvent.click(aboutLink);
+      // After clicking, the About link should be highlighted
+      const clickedAboutLink = screen.getByText('About Us').closest('a');
+      expect(clickedAboutLink).toHaveClass('font-semibold');
     });
 
     it('should highlight Admissions link when on admissions page', () => {
-      renderNavbar(['/admissions']);
+      renderNavbar();
+      // Click Admissions link to simulate navigation
       const admissionsLink = screen.getByText('Admissions');
-      expect(admissionsLink).toHaveClass('font-semibold');
+      fireEvent.click(admissionsLink);
+      // After clicking, the Admissions link should be highlighted
+      const clickedAdmissionsLink = screen.getByText('Admissions').closest('a');
+      expect(clickedAdmissionsLink).toHaveClass('font-semibold');
     });
   });
 
@@ -157,13 +165,13 @@ describe('Navbar', () => {
       renderNavbar();
 
       const homeLink = screen.getByText('Home').closest('a');
-      expect(homeLink).toHaveAttribute('href', '/');
+      expect(homeLink).toHaveAttribute('href', '#/');
 
       const aboutLink = screen.getByText('About Us').closest('a');
-      expect(aboutLink).toHaveAttribute('href', '/about');
+      expect(aboutLink).toHaveAttribute('href', '#/about');
 
       const admissionsLink = screen.getByText('Admissions').closest('a');
-      expect(admissionsLink).toHaveAttribute('href', '/admissions');
+      expect(admissionsLink).toHaveAttribute('href', '#/admissions');
     });
   });
 

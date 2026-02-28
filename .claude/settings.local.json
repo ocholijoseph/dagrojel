@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build)",
+      "Bash(npm test -- --run)",
+      "Bash(ls -la src/components/Gallery*)",
+      "Bash(ls -la src/components/*Gallery*)",
+      "Bash(curl -s http://localhost:1300)",
+      "Bash(npm run test)",
+      "Bash(git add .gitignore src/App.tsx src/index.css src/pages/Admissions.tsx src/pages/Contact.tsx src/pages/Gallery.tsx tsconfig.app.json vite.config.ts public/gallery/ src/components/ErrorBoundary.tsx src/components/Lightbox.tsx src/data/ src/test/)",
+      "Bash(git commit:*)",
+      "Bash(git push)"
+    ]
+  }
+}

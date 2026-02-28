@@ -29,6 +29,10 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const location = useLocation();
 
+  // Get the current hash-based path for active link detection
+  // HashRouter uses hash portion, so we need to check location.pathname
+  const currentPath = location.pathname;
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
@@ -100,7 +104,7 @@ export default function Navbar() {
                   to={link.href}
                   className={cn(
                     "flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200",
-                    location.pathname === link.href
+                    currentPath === link.href
                       ? "text-primary bg-primary/8 font-semibold"
                       : "text-foreground hover:text-primary hover:bg-primary/6"
                   )}
@@ -170,7 +174,7 @@ export default function Navbar() {
                     to={link.href}
                     className={cn(
                       "block px-4 py-3 rounded-md text-sm font-medium transition-colors",
-                      location.pathname === link.href
+                      currentPath === link.href
                         ? "text-primary bg-primary/8 font-semibold"
                         : "text-foreground hover:text-primary hover:bg-primary/6"
                     )}

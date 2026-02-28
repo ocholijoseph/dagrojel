@@ -1,14 +1,14 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import Footer from '@/components/Footer';
 
 describe('Footer', () => {
   const renderFooter = () => {
     return render(
-      <MemoryRouter>
+      <HashRouter>
         <Footer />
-      </MemoryRouter>
+      </HashRouter>
     );
   };
 
@@ -71,17 +71,17 @@ describe('Footer', () => {
 
       // Find links by href instead of text to be more specific
       const aboutLink = screen.getAllByRole('link').find(link =>
-        link.getAttribute('href') === '/about'
+        link.getAttribute('href') === '#/about'
       );
       expect(aboutLink).toBeInTheDocument();
 
       const academicsLink = screen.getAllByRole('link').find(link =>
-        link.getAttribute('href') === '/academics'
+        link.getAttribute('href') === '#/academics'
       );
       expect(academicsLink).toBeInTheDocument();
 
       const admissionsLink = screen.getAllByRole('link').find(link =>
-        link.getAttribute('href') === '/admissions'
+        link.getAttribute('href') === '#/admissions'
       );
       expect(admissionsLink).toBeInTheDocument();
     });
@@ -112,16 +112,16 @@ describe('Footer', () => {
       renderFooter();
 
       const receptionLink = screen.getByText('Reception Programme').closest('a');
-      expect(receptionLink).toHaveAttribute('href', '/academics#reception');
+      expect(receptionLink).toHaveAttribute('href', '#/academics#reception');
 
       const nurseryLink = screen.getByText('Nursery Programme').closest('a');
-      expect(nurseryLink).toHaveAttribute('href', '/academics#nursery');
+      expect(nurseryLink).toHaveAttribute('href', '#/academics#nursery');
 
       const primaryLink = screen.getByText('Primary School').closest('a');
-      expect(primaryLink).toHaveAttribute('href', '/academics#primary');
+      expect(primaryLink).toHaveAttribute('href', '#/academics#primary');
 
       const secondaryLink = screen.getByText('Secondary School').closest('a');
-      expect(secondaryLink).toHaveAttribute('href', '/academics#secondary');
+      expect(secondaryLink).toHaveAttribute('href', '#/academics#secondary');
     });
   });
 
